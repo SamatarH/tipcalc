@@ -21,13 +21,18 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 val input = s.toString()
                 if (input.isNotEmpty() && input != "$") {
-                    val amount = input.replace("$", "").toDouble()
-                    val formattedAmount = DecimalFormat("$#.##").format(amount)
-                    editTextAmount.removeTextChangedListener(this)
-                    editTextAmount.setText(formattedAmount)
-                    editTextAmount.setSelection(formattedAmount.length)
-                    editTextAmount.addTextChangedListener(this)
-                    buttonTip.isEnabled = true
+                    try {
+                        val amount = input.replace("$", "").toDouble()
+                        val formattedAmount = DecimalFormat("$#.##").format(amount)
+                        editTextAmount.removeTextChangedListener(this)
+                        editTextAmount.setText(formattedAmount)
+                        editTextAmount.setSelection(formattedAmount.length)
+                        editTextAmount.addTextChangedListener(this)
+                        buttonTip.isEnabled = true
+                    } catch (e: NumberFormatException) {
+                        editTextAmount.error = "Invalid input"
+                        buttonTip.isEnabled = false
+                    }
                 } else {
                     buttonTip.isEnabled = false
                 }
