@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-
         buttonTip.setOnClickListener {
             val amount = editTextAmount.text.toString().substring(1).toDouble()
             val tip = amount * 0.15
@@ -52,4 +51,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
 

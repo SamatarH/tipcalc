@@ -12,7 +12,7 @@
         android:id="@+id/editTextAmount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
+        android:inputType="numberDecimal|numberSigned"
         android:hint="Amount"
         android:padding="12dp"
         android:backgroundTint="@color/editTextBackground"
